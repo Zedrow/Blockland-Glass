@@ -1,0 +1,264 @@
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(BLG_Remote) {
+   profile = "GuiDefaultProfile";
+   horizSizing = "right";
+   vertSizing = "bottom";
+   position = "0 0";
+   extent = "640 480";
+   minExtent = "8 2";
+   enabled = "1";
+   visible = "1";
+   clipToParent = "1";
+
+   new GuiWindowCtrl() {
+      profile = "GuiWindowProfile";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      position = "0 0";
+      extent = "640 480";
+      minExtent = "8 2";
+      enabled = "1";
+      visible = "1";
+      clipToParent = "1";
+      maxLength = "255";
+      resizeWidth = "1";
+      resizeHeight = "1";
+      canMove = "1";
+      canClose = "1";
+      canMinimize = "1";
+      canMaximize = "1";
+      minSize = "50 50";
+
+      new GuiSwatchCtrl() {
+         profile = "GuiDefaultProfile";
+         horizSizing = "right";
+         vertSizing = "bottom";
+         position = "10 60";
+         extent = "620 410";
+         minExtent = "8 2";
+         enabled = "1";
+         visible = "1";
+         clipToParent = "1";
+         color = "255 255 255 255";
+
+         new GuiSwatchCtrl() {
+            profile = "GuiDefaultProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "10 10";
+            extent = "335 390";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            color = "64 64 64 64";
+
+            new GuiScrollCtrl() {
+               profile = "BLG_ScrollProfile";
+               horizSizing = "right";
+               vertSizing = "bottom";
+               position = "10 30";
+               extent = "316 320";
+               minExtent = "8 2";
+               enabled = "1";
+               visible = "1";
+               clipToParent = "1";
+               willFirstRespond = "0";
+               hScrollBar = "alwaysOff";
+               vScrollBar = "alwaysOn";
+               constantThumbHeight = "0";
+               childMargin = "0 0";
+               rowHeight = "40";
+               columnWidth = "30";
+            };
+            new GuiBitmapButtonCtrl() {
+               profile = "BlockButtonProfile";
+               horizSizing = "left";
+               vertSizing = "bottom";
+               position = "225 360";
+               extent = "100 20";
+               minExtent = "8 2";
+               enabled = "1";
+               visible = "1";
+               clipToParent = "1";
+               command = "RTBSC_Pane1.saveOptions();";
+               text = "Save";
+               groupNum = "-1";
+               buttonType = "PushButton";
+               bitmap = "base/client/ui/button1";
+               lockAspectRatio = "0";
+               alignLeft = "0";
+               alignTop = "0";
+               overflowImage = "0";
+               mKeepCached = "0";
+               mColor = "0 255 0 255";
+            };
+            new GuiCheckBoxCtrl() {
+               profile = "GuiCheckBoxProfile";
+               horizSizing = "right";
+               vertSizing = "bottom";
+               position = "10 354";
+               extent = "140 30";
+               minExtent = "8 2";
+               enabled = "1";
+               visible = "1";
+               clipToParent = "1";
+               variable = "$RTB::Options::SC::NotifySettings";
+               text = "Notify Users";
+               groupNum = "-1";
+               buttonType = "ToggleButton";
+            };
+            new GuiTextCtrl() {
+               profile = "BLG_BlockButtonProfile";
+               horizSizing = "right";
+               vertSizing = "bottom";
+               position = "5 5";
+               extent = "334 18";
+               minExtent = "8 2";
+               enabled = "1";
+               visible = "1";
+               clipToParent = "1";
+               text = "RTB Prefrences";
+               maxLength = "255";
+            };
+            new GuiSwatchCtrl() {
+               profile = "GuiDefaultProfile";
+               horizSizing = "right";
+               vertSizing = "bottom";
+               position = "0 0";
+               extent = "335 390";
+               minExtent = "8 2";
+               enabled = "1";
+               visible = "1";
+               clipToParent = "1";
+               color = "64 64 64 200";
+
+               new GuiTextCtrl() {
+                  profile = "GuiTextProfile";
+                  horizSizing = "center";
+                  vertSizing = "center";
+                  position = "104 186";
+                  extent = "126 18";
+                  minExtent = "8 2";
+                  enabled = "1";
+                  visible = "1";
+                  clipToParent = "1";
+                  text = "Disabled. Not yet available";
+                  maxLength = "255";
+               };
+            };
+         };
+         new GuiSwatchCtrl() {
+            profile = "GuiDefaultProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "355 10";
+            extent = "255 390";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            color = "64 64 64 64";
+
+            new GuiTextCtrl() {
+               profile = "BLG_BlockButtonProfile";
+               horizSizing = "center";
+               vertSizing = "bottom";
+               position = "-40 5";
+               extent = "334 18";
+               minExtent = "8 2";
+               enabled = "1";
+               visible = "1";
+               clipToParent = "1";
+               text = "Server";
+               maxLength = "255";
+            };
+            new GuiTextCtrl() {
+               profile = "BLG_TextProfile";
+               horizSizing = "right";
+               vertSizing = "bottom";
+               position = "10 30";
+               extent = "63 18";
+               minExtent = "8 2";
+               enabled = "1";
+               visible = "1";
+               clipToParent = "1";
+               text = "Server Name";
+               maxLength = "255";
+            };
+            new GuiTextCtrl() {
+               profile = "BLG_TextProfile";
+               horizSizing = "right";
+               vertSizing = "bottom";
+               position = "10 55";
+               extent = "59 18";
+               minExtent = "8 2";
+               enabled = "1";
+               visible = "1";
+               clipToParent = "1";
+               text = "Max Players";
+               maxLength = "255";
+            };
+            new GuiTextEditCtrl(BLG_Remote_ServerName) {
+               profile = "BLG_TextEditProfile";
+               horizSizing = "right";
+               vertSizing = "bottom";
+               position = "85 30";
+               extent = "160 18";
+               minExtent = "8 2";
+               enabled = "1";
+               visible = "1";
+               clipToParent = "1";
+               maxLength = "255";
+               historySize = "0";
+               password = "0";
+               tabComplete = "0";
+               sinkAllKeyEvents = "0";
+            };
+            new GuiPopUpMenuCtrl(BLG_Remote_MaxPlayers) {
+               profile = "GuiPopUpMenuProfile";
+               horizSizing = "right";
+               vertSizing = "bottom";
+               position = "85 55";
+               extent = "160 18";
+               minExtent = "8 2";
+               enabled = "1";
+               visible = "1";
+               clipToParent = "1";
+               maxLength = "255";
+               maxPopupHeight = "200";
+            };
+            new GuiTextCtrl() {
+               profile = "BLG_TextProfile";
+               horizSizing = "right";
+               vertSizing = "bottom";
+               position = "10 80";
+               extent = "50 18";
+               minExtent = "8 2";
+               enabled = "1";
+               visible = "1";
+               clipToParent = "1";
+               text = "Password";
+               maxLength = "255";
+            };
+            new GuiTextEditCtrl(BLG_Remote_Password) {
+               profile = "BLG_TextEditProfile";
+               horizSizing = "right";
+               vertSizing = "bottom";
+               position = "85 80";
+               extent = "160 18";
+               minExtent = "8 2";
+               enabled = "1";
+               visible = "1";
+               clipToParent = "1";
+               maxLength = "255";
+               historySize = "0";
+               password = "0";
+               tabComplete = "0";
+               sinkAllKeyEvents = "0";
+            };
+         };
+      };
+   };
+};
+//--- OBJECT WRITE END ---

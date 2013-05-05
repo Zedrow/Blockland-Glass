@@ -1,0 +1,243 @@
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(BLG_Player) {
+   profile = "GuiDefaultProfile";
+   horizSizing = "right";
+   vertSizing = "bottom";
+   position = "0 0";
+   extent = "640 480";
+   minExtent = "8 2";
+   enabled = "1";
+   visible = "1";
+   clipToParent = "1";
+
+   new GuiWindowCtrl() {
+      profile = "GuiWindowProfile";
+      horizSizing = "center";
+      vertSizing = "center";
+      position = "160 7";
+      extent = "320 465";
+      minExtent = "8 2";
+      enabled = "1";
+      visible = "1";
+      clipToParent = "1";
+      text = "Player Page";
+      maxLength = "255";
+      resizeWidth = "1";
+      resizeHeight = "1";
+      canMove = "1";
+      canClose = "1";
+      canMinimize = "1";
+      canMaximize = "1";
+      minSize = "50 50";
+
+      new GuiSwatchCtrl() {
+         profile = "GuiDefaultProfile";
+         horizSizing = "right";
+         vertSizing = "bottom";
+         position = "10 30";
+         extent = "300 95";
+         minExtent = "8 2";
+         enabled = "1";
+         visible = "1";
+         clipToParent = "1";
+         color = "255 255 255 127";
+
+         new GuiTextCtrl() {
+            profile = "BlockButtonProfile";
+            horizSizing = "center";
+            vertSizing = "bottom";
+            position = "8 5";
+            extent = "283 18";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            text = "Jincux (9789)";
+            maxLength = "255";
+         };
+         new GuiSwatchCtrl() {
+            profile = "GuiDefaultProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "5 25";
+            extent = "165 65";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            color = "0 0 0 32";
+
+            new GuiMLTextCtrl(BLG_Player_StatusBlurb) {
+               profile = "RTB_Verdana12Pt";
+               horizSizing = "right";
+               vertSizing = "bottom";
+               position = "5 5";
+               extent = "155 36";
+               minExtent = "8 2";
+               enabled = "1";
+               visible = "1";
+               clipToParent = "1";
+               lineSpacing = "2";
+               allowColorChars = "0";
+               maxChars = "-1";
+               maxBitmapHeight = "-1";
+               selectable = "1";
+               autoResize = "1";
+            };
+         };
+      };
+      new GuiSwatchCtrl() {
+         profile = "GuiDefaultProfile";
+         horizSizing = "right";
+         vertSizing = "bottom";
+         position = "10 155";
+         extent = "300 297";
+         minExtent = "8 2";
+         enabled = "1";
+         visible = "1";
+         clipToParent = "1";
+         color = "255 255 255 127";
+
+         new GuiScrollCtrl() {
+            profile = "BLG_ScrollProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "5 5";
+            extent = "290 286";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            willFirstRespond = "0";
+            hScrollBar = "alwaysOff";
+            vScrollBar = "alwaysOn";
+            constantThumbHeight = "0";
+            childMargin = "5 5";
+            rowHeight = "40";
+            columnWidth = "30";
+
+            new GuiSwatchCtrl() {
+               profile = "GuiDefaultProfile";
+               horizSizing = "right";
+               vertSizing = "bottom";
+               position = "6 6";
+               extent = "266 64";
+               minExtent = "8 2";
+               enabled = "1";
+               visible = "1";
+               clipToParent = "1";
+               color = "128 128 128 128";
+
+               new GuiTextCtrl() {
+                  profile = "RTB_AutoVerdana12";
+                  horizSizing = "center";
+                  vertSizing = "bottom";
+                  position = "5 5";
+                  extent = "191 16";
+                  minExtent = "8 2";
+                  enabled = "1";
+                  visible = "1";
+                  clipToParent = "1";
+                  text = "Joined \"Jincux\'s Development Server\"";
+                  maxLength = "255";
+               };
+               new GuiTextCtrl() {
+                  profile = "GuiTextProfile";
+                  horizSizing = "right";
+                  vertSizing = "bottom";
+                  position = "5 22";
+                  extent = "123 18";
+                  minExtent = "8 2";
+                  enabled = "1";
+                  visible = "1";
+                  clipToParent = "1";
+                  text = "Duration: Currently Online";
+                  maxLength = "255";
+               };
+               new GuiTextCtrl() {
+                  profile = "GuiTextRightProfile";
+                  horizSizing = "right";
+                  vertSizing = "bottom";
+                  position = "480 5";
+                  extent = "67 18";
+                  minExtent = "8 2";
+                  enabled = "1";
+                  visible = "1";
+                  clipToParent = "1";
+                  text = "5 minutes ago";
+                  maxLength = "255";
+               };
+            };
+         };
+      };
+      new GuiBitmapButtonCtrl(BLG_ServerInfo_Button1) {
+         profile = "BlockButtonProfile";
+         horizSizing = "left";
+         vertSizing = "top";
+         position = "110 135";
+         extent = "100 20";
+         minExtent = "8 2";
+         enabled = "1";
+         visible = "1";
+         clipToParent = "1";
+         command = "BLG_C_INF.tab(1);";
+         text = "History";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         bitmap = "base/client/ui/tab1";
+         lockAspectRatio = "0";
+         alignLeft = "0";
+         alignTop = "0";
+         overflowImage = "0";
+         mKeepCached = "0";
+         mColor = "255 255 255 255";
+            wrap = "0";
+      };
+      new GuiBitmapButtonCtrl() {
+         profile = "BlockButtonProfile";
+         horizSizing = "left";
+         vertSizing = "top";
+         position = "10 135";
+         extent = "100 20";
+         minExtent = "8 2";
+         enabled = "1";
+         visible = "1";
+         clipToParent = "1";
+         text = "Comments";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         bitmap = "base/client/ui/tab1use";
+         lockAspectRatio = "0";
+         alignLeft = "0";
+         alignTop = "0";
+         overflowImage = "0";
+         mKeepCached = "0";
+         mColor = "255 255 255 255";
+            wrap = "0";
+      };
+      new GuiBitmapButtonCtrl(BLG_ServerInfo_Button1) {
+         profile = "BlockButtonProfile";
+         horizSizing = "left";
+         vertSizing = "top";
+         position = "210 135";
+         extent = "100 20";
+         minExtent = "8 2";
+         enabled = "1";
+         visible = "1";
+         clipToParent = "1";
+         command = "BLG_C_INF.tab(1);";
+         text = "Stats";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         bitmap = "base/client/ui/tab1";
+         lockAspectRatio = "0";
+         alignLeft = "0";
+         alignTop = "0";
+         overflowImage = "0";
+         mKeepCached = "0";
+         mColor = "255 255 255 255";
+            wrap = "0";
+      };
+   };
+};
+//--- OBJECT WRITE END ---

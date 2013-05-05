@@ -1,0 +1,348 @@
+function clientcmdBLGSettings(%port, %stats) {
+   BLG_ServerSettings_Port.setValue(%port);
+
+   BLG_ServerSettings_Stats_Player.setValue(getField(%stats, 0));
+   BLG_ServerSettings_Stats_Brick.setValue(getField(%stats, 1));
+   BLG_ServerSettings_Stats_Joins.setValue(getField(%stats, 2));
+   BLG_ServerSettings_Stats_Graph.setValue(getField(%stats, 3));
+   Canvas.pushDialog(BLG_ServerSettings);
+}
+
+function BLG_ServerSettings::send(%this) {
+   commandToServer('BLGSettings', "update", BLG_ServerSettings_Port.getValue(),
+      BLG_ServerSettings_Stats_Player.getValue() TAB 
+      BLG_ServerSettings_Stats_Brick.getValue() TAB 
+      BLG_ServerSettings_Stats_Joins.getValue() TAB 
+      BLG_ServerSettings_Stats_Graph.getValue());
+
+   canvas.popdialog(%this);
+}
+
+function BLG_ServerSettings::open(%this) {
+   commandtoserver('BLGSettings');
+}
+
+//--- OBJECT WRITE BEGIN ---
+new GuiControl(BLG_ServerSettings) {
+   profile = "GuiDefaultProfile";
+   horizSizing = "right";
+   vertSizing = "bottom";
+   position = "0 0";
+   extent = "640 480";
+   minExtent = "8 2";
+   enabled = "1";
+   visible = "1";
+   clipToParent = "1";
+
+   new GuiWindowCtrl() {
+      profile = "GuiWindowProfile";
+      horizSizing = "center";
+      vertSizing = "center";
+      position = "185 40";
+      extent = "270 400";
+      minExtent = "8 2";
+      enabled = "1";
+      visible = "1";
+      clipToParent = "1";
+      text = "BLG Server Settings";
+      maxLength = "255";
+      resizeWidth = "0";
+      resizeHeight = "0";
+      canMove = "1";
+      canClose = "1";
+      canMinimize = "0";
+      canMaximize = "0";
+      minSize = "50 50";
+      closeCommand = "Canvas.popDialog(BLG_ServerSettings);";
+
+      new GuiSwatchCtrl() {
+         profile = "GuiDefaultProfile";
+         horizSizing = "right";
+         vertSizing = "bottom";
+         position = "10 30";
+         extent = "175 170";
+         minExtent = "8 2";
+         enabled = "1";
+         visible = "1";
+         clipToParent = "1";
+         color = "255 255 255 127";
+
+         new GuiTextCtrl() {
+            profile = "BlockButtonProfile";
+            horizSizing = "center";
+            vertSizing = "bottom";
+            position = "-13 5";
+            extent = "200 18";
+            minExtent = "200 18";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            text = "General";
+            maxLength = "255";
+         };
+         new GuiTextCtrl() {
+            profile = "GuiTextProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "10 25";
+            extent = "89 18";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            text = "Port (0 for default)";
+            maxLength = "255";
+         };
+         new GuiTextEditCtrl(BLG_ServerSettings_Port) {
+            profile = "GuiTextEditProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "119 25";
+            extent = "50 18";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            maxLength = "255";
+            historySize = "0";
+            password = "0";
+            tabComplete = "0";
+            sinkAllKeyEvents = "0";
+         };
+         new GuiTextCtrl() {
+            profile = "GuiTextProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "10 43";
+            extent = "68 18";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            text = "Speed-Upload";
+            maxLength = "255";
+         };
+         new GuiCheckBoxCtrl(BLG_ServerSettings_Upload) {
+            profile = "GuiCheckBoxProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "157 46";
+            extent = "18 14";
+            minExtent = "8 2";
+            enabled = "0";
+            visible = "1";
+            clipToParent = "1";
+            text = " ";
+            groupNum = "-1";
+            buttonType = "ToggleButton";
+         };
+      };
+      new GuiSwatchCtrl() {
+         profile = "GuiDefaultProfile";
+         horizSizing = "right";
+         vertSizing = "bottom";
+         position = "10 208";
+         extent = "175 182";
+         minExtent = "8 2";
+         enabled = "1";
+         visible = "1";
+         clipToParent = "1";
+         color = "255 255 255 127";
+
+         new GuiTextCtrl() {
+            profile = "BlockButtonProfile";
+            horizSizing = "center";
+            vertSizing = "bottom";
+            position = "-13 5";
+            extent = "200 18";
+            minExtent = "200 18";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            text = "Stats";
+            maxLength = "255";
+         };
+         new GuiTextCtrl() {
+            profile = "GuiTextProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "10 25";
+            extent = "30 18";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            text = "Player";
+            maxLength = "255";
+         };
+         new GuiTextCtrl() {
+            profile = "GuiTextProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "10 43";
+            extent = "24 18";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            text = "Brick";
+            maxLength = "255";
+         };
+         new GuiTextCtrl() {
+            profile = "GuiTextProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "10 61";
+            extent = "25 18";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            text = "Joins";
+            maxLength = "255";
+         };
+         new GuiCheckBoxCtrl(BLG_ServerSettings_Stats_Player) {
+            profile = "GuiCheckBoxProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "157 25";
+            extent = "14 18";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            text = " ";
+            groupNum = "-1";
+            buttonType = "ToggleButton";
+         };
+         new GuiCheckBoxCtrl(BLG_ServerSettings_Stats_Brick) {
+            profile = "GuiCheckBoxProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "157 43";
+            extent = "14 18";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            text = " ";
+            groupNum = "-1";
+            buttonType = "ToggleButton";
+         };
+         new GuiCheckBoxCtrl(BLG_ServerSettings_Stats_Joins) {
+            profile = "GuiCheckBoxProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "157 61";
+            extent = "14 18";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            text = " ";
+            groupNum = "-1";
+            buttonType = "ToggleButton";
+         };
+         new GuiTextCtrl() {
+            profile = "GuiTextProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "10 97";
+            extent = "30 18";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            text = "Graph";
+            maxLength = "255";
+         };
+         new GuiCheckBoxCtrl(BLG_ServerSettings_Stats_Graph) {
+            profile = "GuiCheckBoxProfile";
+            horizSizing = "right";
+            vertSizing = "bottom";
+            position = "157 97";
+            extent = "14 18";
+            minExtent = "8 2";
+            enabled = "1";
+            visible = "1";
+            clipToParent = "1";
+            text = " ";
+            groupNum = "-1";
+            buttonType = "ToggleButton";
+         };
+      };
+      new GuiBitmapButtonCtrl() {
+         profile = "BlockButtonProfile";
+         horizSizing = "left";
+         vertSizing = "top";
+         position = "195 30";
+         extent = "65 21";
+         minExtent = "8 2";
+         enabled = "1";
+         visible = "1";
+         clipToParent = "1";
+         command = "BLG_ServerSettings.send();";
+         accelerator = "enter";
+         text = "Save";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         bitmap = "base/client/ui/button1";
+         lockAspectRatio = "0";
+         alignLeft = "0";
+         alignTop = "0";
+         overflowImage = "0";
+         mKeepCached = "1";
+         mColor = "55 255 55 255";
+            wrap = "0";
+      };
+      new GuiBitmapButtonCtrl() {
+         profile = "BlockButtonProfile";
+         horizSizing = "left";
+         vertSizing = "top";
+         position = "195 55";
+         extent = "65 21";
+         minExtent = "8 2";
+         enabled = "0";
+         visible = "1";
+         clipToParent = "1";
+         command = "BLG_ServerSettings.save();";
+         accelerator = "enter";
+         text = "Console";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         bitmap = "base/client/ui/button1";
+         lockAspectRatio = "0";
+         alignLeft = "0";
+         alignTop = "0";
+         overflowImage = "0";
+         mKeepCached = "1";
+         mColor = "255 255 255 255";
+            wrap = "0";
+      };
+      new GuiBitmapButtonCtrl() {
+         profile = "BlockButtonProfile";
+         horizSizing = "left";
+         vertSizing = "top";
+         position = "195 369";
+         extent = "65 21";
+         minExtent = "8 2";
+         enabled = "1";
+         visible = "1";
+         clipToParent = "1";
+         command = "Canvas.popDialog(BLG_ServerSettings);";
+         accelerator = "escape";
+         text = "Exit";
+         groupNum = "-1";
+         buttonType = "PushButton";
+         bitmap = "base/client/ui/button1";
+         lockAspectRatio = "0";
+         alignLeft = "0";
+         alignTop = "0";
+         overflowImage = "0";
+         mKeepCached = "1";
+         mColor = "255 55 55 255";
+            wrap = "0";
+      };
+   };
+};
+//--- OBJECT WRITE END ---
